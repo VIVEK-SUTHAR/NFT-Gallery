@@ -4,7 +4,7 @@ export const NFTCard = ({ nft }) => {
     const nftAddress = nft.contract.address;
     return (
         <div className="lg:w-1/4 outline-2 bg-glass rounded-lg p-2">
-            <img className="rounded-md object-contain  truncate" src={nft.media[0].gateway} alt="" />
+            <img className="rounded-md object-contain img" src={nft.media[0].gateway} alt="" />
             <center>
                 <h3 className="py-3 px-2 text-xl mx-auto truncate">{nftTitle}</h3>
             </center>
@@ -15,7 +15,7 @@ export const NFTCard = ({ nft }) => {
                 <h3 className="py-1 px-2 text-xs max-w-xl truncate">{nftAddress}</h3>
             </div>
             <div>
-                <h3 className="py-1 px-2 text-sm truncate">{nft.description}</h3>
+                <p className="py-1 px-2 text-sm ">{nft.description}</p>
             </div>
         </div>
     )
