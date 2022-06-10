@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { NFTCard } from "../components/NFTCard";
-
 const Home = () => {
   const [WalletAddres, setWalletAddres] = useState("");
   const [collection, setCollection] = useState("");
   const [NFTs, setNFTs] = useState([]);
   const [fetchForCollection, setFetchForCollection] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const id = useId;
   const fetchNFT = async () => {
     let nfts;
     // console.log("fetching nfts");
@@ -20,14 +21,16 @@ const Home = () => {
       const fetchURL = `${baseURL}?owner=${WalletAddres}`;
 
       nfts = await fetch(fetchURL, requestOptions).then(data => data.json())
+      // setLoading(false);
     } else {
       // console.log("fetching nfts for collection owned by address")
-      const fetchURL = `${baseURL}?owner=${wallet}&contractAddresses%5B%5D=${collection}`;
+      const fetchURL = `${baseURL}?owner=${WalletAddres}&contractAddresses%5B%5D=${collection}`;
       nfts = await fetch(fetchURL, requestOptions).then(data => data.json())
     }
 
     if (nfts) {
       // console.log("nfts:", nfts)
+      setLoading(false);
       setNFTs(nfts.ownedNfts)
     }
   }
@@ -42,7 +45,8 @@ const Home = () => {
       const nfts = await fetch(fetchURL, requestOptions).then(data => data.json())
       if (nfts) {
         // console.log("NFTs in collection:", nfts)
-        setNFTs(nfts.nfts)
+        setNFTs(nfts.nfts);
+        setLoading(false);
       }
     }
   }
@@ -69,6 +73,7 @@ const Home = () => {
         <button
           className={"disabled:bg-slate-500 text-white bg-blue-400 px-4 py-2 mt-3 rounded-xl lg:w-1/5  gr text-2xl text-slate"}
           onClick={() => {
+            setLoading(true)
             if (fetchForCollection) {
               fetchNFTsForCollection()
             } else fetchNFT()
@@ -76,15 +81,18 @@ const Home = () => {
           }
         >Let's go! </button>
       </div>
+      {
+        loading && (<div className="loader">Getting All NFTs...</div>)
+      }
       <div className='flex flex-wrap flex-col lg:flex-row gap-y-12 mt-4 w-5/6 gap-x-2 justify-center'>
         {
           NFTs && NFTs.map(nft => {
             return (
-              <NFTCard nft={nft} />
+              <NFTCard key={id} nft={nft} />
             )
           })
         }
-      </div>  
+      </div>
     </div>
   )
 }

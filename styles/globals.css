@@ -1,19 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
     width: 5px;
     background-color: transparent;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: #FF5F6D;
     border-radius: 5px;
 }
+
 body {
     /* background: #12c2e9; */
     /* fallback for old browsers */
@@ -30,7 +34,7 @@ body {
 
 }
 
-.img{
+.img {
     max-width: 100%;
     height: auto;
 }
@@ -49,6 +53,46 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-.card{
-    overflow-wrap:break-word;
+
+.card {
+    overflow-wrap: break-word;
+}
+
+.loader {
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-weight: 600;
+    min-height: 10vh;
+    min-width: 10vh;
+    max-width: 10vh;
+    max-height: 10vh;
+    background-color: #FF5F6D;
+    border: 2px solid #64b3f4;
+    border-radius: 50%;
+    animation:loader infinite 2s;
+}
+
+@keyframes loader {
+    0% {
+        border: 1px solid rgb(0, 0, 0);
+        transform: rotate(0deg);
+    }
+    25% {
+        border: 2px solid rgb(0, 255, 0);
+        transform: rotate(90deg);
+    }
+    50% {
+        border: 3px solid rgb(43, 0, 255);
+        transform: rotate(180deg);
+    }
+    75% {
+        border: 2px solid rgb(0, 255, 106);
+        transform: rotate(240deg);
+    }
+    100% {
+        border: 1px solid black;
+        transform: rotate(360deg);
+    }
 }
