@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: transparent;
+
+}
+::-webkit-scrollbar-track{
+    width: 5px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #FF5F6D;
+    border-radius: 5px;
+}
+body {
+    /* background: #12c2e9; */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9); */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); */
+    background: #c2e59c;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #64b3f4, #c2e59c);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow-x: hidden;
+
+}
+
+.bg-glass {
+    background-color: rgba(255, 255, 255, 0.5);
+    accent-color: black;
+}
+
+.gr {
+    background: #FF5F6D;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFC371, #FF5F6D);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.card{
+    overflow-wrap:break-word;
+}
